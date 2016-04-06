@@ -2,7 +2,7 @@
 
 This project rocks and uses MIT-LICENSE.
 
-<b>initialize<b>
+<b>initialize</b>
 
 clientid = ''
 senderid = ''
