@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Promotexter::VERSION
   s.authors     = ["Nujian Den MarkMeralpis"]
   s.email       = ["denmark@nueca.net"]
-  s.homepage    = ""
+  s.homepage    = "http://genmcrg.com"
   s.summary     = "Hello World!"
   s.description = "The gem provides a simple way of sending SMS via Promotexter API"
   s.license     = "MIT"
