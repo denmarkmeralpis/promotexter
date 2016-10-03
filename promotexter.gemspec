@@ -7,10 +7,10 @@ require "promotexter/version"
 Gem::Specification.new do |s|
   s.name        = "promotexter"
   s.version     = Promotexter::VERSION
-  s.authors     = ["Nujian Den MarkMeralpis"]
+  s.authors     = ["denmarkmeralpis"]
   s.email       = ["denmark@nueca.net"]
   s.homepage    = "http://genmcrg.com"
-  s.summary     = "Hello World!"
+  s.summary     = "Simple way of sending SMS via Promotexter API"
   s.description = "The gem provides a simple way of sending SMS via Promotexter API"
   s.license     = "MIT"
 
@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
 
   # s.add_dependency "rails", "=> 4.0.0"
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency "bundler", "~> 1.12"
+  s.add_development_dependency "rake", "~> 10.0"
 end
