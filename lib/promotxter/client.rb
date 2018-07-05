@@ -1,6 +1,17 @@
 require 'net/http'
 
 module Promotxter
+
+  class Response
+    attr_reader :status, :message_id
+
+    def initialize(http_response)
+      response = JSON.parse(http_response.body)
+      @status = response['status']
+      @message_id = response['message']['id']
+    end
+  end
+
   class Client
     attr_accessor :api_secret, :api_key, :from, :http, :to, :text
     SMSAPI_PATH = '/sms/send'
@@ -27,6 +38,7 @@ module Promotxter
       puts MESSAGE_PARAMS
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
+      return Response.new(res)
     end
   end
 end
