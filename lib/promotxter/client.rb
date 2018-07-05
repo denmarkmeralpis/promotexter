@@ -3,28 +3,6 @@ require 'json'
 
 module Promotxter
 
-  class Response
-    attr_reader :status, :message_id, :from, :error
-
-    def initialize(http_response)
-      response = JSON.parse(http_response.body)
-      puts response.inspect
-      if response['statusCode'].present?
-        @error = {
-          status_code: response['statusCode'],
-          error_name: response['error'],
-          message: response['message']
-        }
-        @error = 'not ok'
-      else 
-        @status = response['status']
-        @message_id = response['data']['id']
-        @from = response['data']['from']
-      end
-      
-    end
-  end
-
   class Client
     attr_accessor :api_secret, :api_key, :from, :http, :to, :text
     SMSAPI_PATH = '/sms/send'
