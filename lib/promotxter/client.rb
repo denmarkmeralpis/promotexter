@@ -4,13 +4,14 @@ require 'json'
 module Promotxter
 
   class Response
-    attr_reader :status, :message_id
+    attr_reader :status, :message_id, :from
 
     def initialize(http_response)
       response = JSON.parse(http_response.body)
-      @status = response['status']
       puts response.inspect
+      @status = response['status']
       @message_id = response['data']['id']
+      @from = response['data']['from']
     end
   end
 
