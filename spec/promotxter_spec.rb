@@ -26,16 +26,24 @@ RSpec.describe Promotxter do
   end
 
   context "when sending a message" do
-    # it "return a 200 status" do
-    #   client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-    #   response = client.send_message({to: ENV[RECEIVING_NUMBER, text: 'testing2']})
-    #   expect(response).to have_http_status(200)
-    # end
-
     it "should have an 'ok' status" do
       client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
       expect(response.status).to eq 'ok'
+    end
+  end
+
+  context "when given an invalid sender id" do
+    it "should return an invalid senderId error message"
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'sender')
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      expect(response.error).to eq 'Invalid SenderID'
+    end
+
+    it "should return a 400 status code"
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'sender')
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      expect(response.statusCode).to eq 400
     end
   end
 end
