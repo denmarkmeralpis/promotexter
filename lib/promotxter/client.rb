@@ -1,4 +1,5 @@
 require 'net/http'
+require 'json'
 
 module Promotxter
 
@@ -8,7 +9,8 @@ module Promotxter
     def initialize(http_response)
       response = JSON.parse(http_response.body)
       @status = response['status']
-      @message_id = response['message']['id']
+      puts response.inspect
+      @message_id = response['data']['id']
     end
   end
 

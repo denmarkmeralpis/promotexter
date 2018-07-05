@@ -27,17 +27,16 @@ RSpec.describe Promotxter do
   end
 
   context "when sending a message" do
-    it "return a 200 status" do
-      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-      response = client.send_message({to: ENV[RECEIVING_NUMBER, text: 'testing2']})
-      expect(response).to have_http_status(200)
-    end
+    # it "return a 200 status" do
+    #   client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
+    #   response = client.send_message({to: ENV[RECEIVING_NUMBER, text: 'testing2']})
+    #   expect(response).to have_http_status(200)
+    # end
 
     it "should have an 'ok' status" do
-      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-      response = client.send_message({to: ENV[RECEIVING_NUMBER, text: 'testing2']})
-      expect(response['status']).to eq 'ok'
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      expect(response.status).to eq 'ok'
     end
   end
 end
-
