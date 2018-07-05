@@ -4,14 +4,24 @@ require 'json'
 module Promotxter
 
   class Response
-    attr_reader :status, :message_id, :from
+    attr_reader :status, :message_id, :from, :error
 
     def initialize(http_response)
       response = JSON.parse(http_response.body)
       puts response.inspect
-      @status = response['status']
-      @message_id = response['data']['id']
-      @from = response['data']['from']
+      if response['statusCode'].present?
+        @error = {
+          status_code: response['statusCode'],
+          error_name: response['error'],
+          message: response['message']
+        }
+        @error = 'not ok'
+      else 
+        @status = response['status']
+        @message_id = response['data']['id']
+        @from = response['data']['from']
+      end
+      
     end
   end
 
@@ -41,7 +51,7 @@ module Promotxter
       puts MESSAGE_PARAMS
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
-      return Response.new(res)
+      return JSON.parse(res.body)
     end
   end
 end
