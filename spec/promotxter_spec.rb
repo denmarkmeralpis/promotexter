@@ -1,7 +1,5 @@
 require 'dotenv'
-
-RECEIVING_NUMBER = '639369642045'
-
+Dotenv.load
 
 RSpec.describe Promotxter do
   it "has a version number" do
@@ -10,20 +8,20 @@ RSpec.describe Promotxter do
 
   context "when initializing a request" do
     it "should have an API key" do
-      client = Promotxter::Client.new(apiKey: ENV['PROMOTXTER_API_KEY'], apiSecret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-      response = client.send_message({to: RECEIVING_NUMBER, text: 'testing'})
-      expect(client.apiKey).to eq ENV['PROMOTXTER_API_KEY']
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing'})
+      expect(client.api_key).to eq ENV['PROMOTXTER_API_KEY']
     end
 
     it "should have an API secret" do
-      client = Promotxter::Client.new(apiKey: ENV['PROMOTXTER_API_KEY'], apiSecret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-      response = client.send_message({to: RECEIVING_NUMBER, text: 'testing'})
-      expect(client.apiSecret).to eq ENV['PROMOTXTER_API_SECRET']
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing'})
+      expect(client.api_secret).to eq ENV['PROMOTXTER_API_SECRET']
     end
 
     it "should have a sender id" do
-      client = Promotxter::Client.new(apiKey: ENV['PROMOTXTER_API_KEY'], apiSecret: ENV['PROMOTXTER_API_SECRET'], from: 'PROMOTXTER_FROM')
-      response = client.send_message({to: RECEIVING_NUMBER, text: 'testing'})
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing'})
       expect(client.from).to eq ENV['PROMOTXTER_FROM']
     end
   end
