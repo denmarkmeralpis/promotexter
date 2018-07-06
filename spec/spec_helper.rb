@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "promotxter"
 require "webmock/rspec"
-include WebMock
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
