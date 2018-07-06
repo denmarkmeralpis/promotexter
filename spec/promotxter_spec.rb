@@ -1,5 +1,21 @@
+require 'webmock/rspec'
 require 'dotenv'
 Dotenv.load
+
+# stub_request(:post, "https://rest-portal.promotexter.com").
+#     with(:headers => { 'Content-Type' => 'application/json' }).to_return(:body => "abc")
+
+# #Actual request
+# req = Net::HTTP::Post.new('/')
+# req['Content-Length'] = 3
+# Net::HTTP.start('http://www.google.com/', 80) {|http|
+#     http.request(req, 'abc')
+# }    # ===> Success
+
+# request(:post, "www.google.com").
+#   with(:body => "abc", :headers => { 'Content-Length' => 3 }).should have_been_made.once
+
+# request(:get, "www.something.com").should_not have_been_made    # ===> Success
 
 RSpec.describe Promotxter do
   it 'has a version number' do
@@ -43,17 +59,23 @@ RSpec.describe Promotxter do
     it 'should return a 400 status code' do
       client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'sender')
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      puts response[:statusCode]
       expect(response[:statusCode]).to eq 400
     end
   end
 
   context 'when receiving a success json response from send endpoint' do
     it 'should have a message object from json' do
-      #TODO: add expectations here
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'sender')
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      expect(response.has_key('message')).to eq true
+      expect(response[:message]).not_to eq nil
     end
 
     it 'should have a message id from json' do
-      #TODO: add expectations here
+      client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: 'sender')
+      response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
+      expect(response[:message][:id]).not_to eq nil
     end
 
     it 'should have a message source from json' do

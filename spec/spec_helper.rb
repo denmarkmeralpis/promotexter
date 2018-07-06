@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "promotxter"
+require "webmock/rspec"
+include WebMock
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
