@@ -46,4 +46,24 @@ RSpec.describe Promotxter do
       expect(response['statusCode']).to eq 400
     end
   end
+
+  context 'when receiving a success json response from send endpoint' do
+    it 'should have a message object from json' do
+      #TODO: add expectations here
+    end
+
+    it 'should have a message id from json' do
+      #TODO: add expectations here
+    end
+
+    #TODO: add more fields to check
+  end
+
+  context 'when receiving a failed json response from send endpoint' do
+    it 'should have a statusCode field from json' do
+      #TODO: add expectations here
+    end
+
+    #TODO: add more fields to check
+  end
 end
