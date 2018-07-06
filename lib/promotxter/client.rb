@@ -3,6 +3,12 @@ require 'json'
 
 module Promotxter
 
+  class Error < StandardError; end
+
+  class BadRequestError < Error; end
+
+  class AuthenticationError < Error; end
+
   class Client
     attr_accessor :api_secret, :api_key, :from, :http, :to, :text
     SMSAPI_PATH = '/sms/send'
@@ -29,7 +35,16 @@ module Promotxter
       puts MESSAGE_PARAMS
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
-      return JSON.parse(res.body, symbolize_names: true)
+      response = JSON.parse(res.body, symbolize_names: true)
+      if response.status == 'ok'
+        return 
+      elsif response.statusCode == 401
+        raise AuthenticationError.new(message = res.body['message'])
+      elsif response.statusCode == 400
+        raise BadRequestError.new(message = res.body['message'])
+      else
+        raise Error.new(message = res.body['message'])
+      end
     end
   end
 end
