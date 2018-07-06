@@ -26,7 +26,7 @@ RSpec.describe Promotxter do
   end
 
   context 'when sending a message' do
-    it 'should have an 'ok' status' do
+    it 'should have an ok status' do
       client = Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
       expect(response['status']).to eq 'ok'

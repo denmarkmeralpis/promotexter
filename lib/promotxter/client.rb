@@ -29,6 +29,7 @@ module Promotxter
       puts MESSAGE_PARAMS
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
+      puts res.body
       return JSON.parse(res.body)
     end
   end
