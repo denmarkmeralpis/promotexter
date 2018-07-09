@@ -3,7 +3,11 @@ require 'json'
 
 module Promotxter
 
-  class Error < StandardError; end
+  class Error < StandardError
+    def initialize(message)
+      super(message)
+    end
+  end
 
   class BadRequestError < Error; end
 
@@ -29,21 +33,24 @@ module Promotxter
 
     def send_message(params = {})
       uri = URI(@host+SMSAPI_PATH)
-      puts uri
       MESSAGE_PARAMS['to'] =  params[:to]
       MESSAGE_PARAMS['text'] =  params[:text]
-      puts MESSAGE_PARAMS
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
+      puts res.inspect
       response = JSON.parse(res.body, symbolize_names: true)
-      if response.status == 'ok'
-        return 
-      elsif response.statusCode == 401
-        raise AuthenticationError.new(message = res.body['message'])
-      elsif response.statusCode == 400
-        raise BadRequestError.new(message = res.body['message'])
+
+      if response.has_key?(:statusCode)
+        case 
+        when 400
+          raise BadRequestError.new(message: response[:message])
+        when 401
+          raise AuthenticationError.new(message: response[:message])
+        else
+          raise Error.new(response[:message])
+        end      
       else
-        raise Error.new(message = res.body['message'])
+        response
       end
     end
   end
