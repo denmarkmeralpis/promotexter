@@ -4,7 +4,7 @@ require 'json'
 Dotenv.load
 
 RSpec.describe Promotexter do
-  let(:client) {Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])}
+  let(:client) {Promotexter::Client.new(api_key: ENV['Promotexter_API_KEY'], api_secret: ENV['Promotexter_API_SECRET'], from: ENV['Promotexter_FROM'])}
   before do
     res_body = '{"apiKey": "key", "apiSecret": "secret", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
     stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})  
@@ -12,22 +12,22 @@ RSpec.describe Promotexter do
 
 
   it 'has a version number' do
-    expect(Promotxter::VERSION).not_to be nil
+    expect(Promotexter::VERSION).not_to be nil
   end
 
   context 'when initializing a request' do
     it 'should have an API key' do
-      expect(client.api_key).to eq ENV['PROMOTXTER_API_KEY']
+      expect(client.api_key).to eq ENV['Promotexter_API_KEY']
     end
 
     it 'should have an API secret' do
-      expect(client.api_secret).to eq ENV['PROMOTXTER_API_SECRET']
+      expect(client.api_secret).to eq ENV['Promotexter_API_SECRET']
     end
 
     it 'should have a sender id' do
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
-      expect(client.from).to eq ENV['PROMOTXTER_FROM']
-      expect(response[:from]).to eq ENV['PROMOTXTER_FROM']
+      expect(client.from).to eq ENV['Promotexter_FROM']
+      expect(response[:from]).to eq ENV['Promotexter_FROM']
     end
   end
 
@@ -77,35 +77,35 @@ RSpec.describe Promotexter do
   context 'when receiving a failed json response' do
     it 'raise an error' do
       error_response = '{"statusCode": 400, "error": "BadRequestError", "message": "Missing Parameter"}'
-      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotxter::BadRequestError)
-      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotxter::BadRequestError)
+      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotexter::BadRequestError)
+      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotexter::BadRequestError)
     end
   end
 
   context 'when given an invalid sender id' do
     it 'should return an invalid senderId error message' do
       error_response = '{"statusCode": 400, "error": "BadRequestError", "message": "Invalid SenderID"}'
-      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotxter::BadRequestError)
-      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotxter::BadRequestError)
-      expect { raise Promotxter::BadRequestError, 'Invalid SenderID' }.to raise_error('Invalid SenderID')
+      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotexter::BadRequestError)
+      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotexter::BadRequestError)
+      expect { raise Promotexter::BadRequestError, 'Invalid SenderID' }.to raise_error('Invalid SenderID')
     end
   end
 
   context 'when given incomplete parameters' do
     it 'should return a mmissing parameter error message' do
       error_response = '{"statusCode": 400, "error": "BadRequestError", "message": "Missing Parameter"}'
-      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotxter::BadRequestError)
-      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotxter::BadRequestError)
-      expect { raise Promotxter::BadRequestError, 'Missing Parameter' }.to raise_error('Missing Parameter')
+      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotexter::BadRequestError)
+      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotexter::BadRequestError)
+      expect { raise Promotexter::BadRequestError, 'Missing Parameter' }.to raise_error('Missing Parameter')
     end
   end
 
   context 'when given an invalid mobile number' do
     it 'should return an invalid mobile number error message' do
       error_response = '{"statusCode": 400, "error": "BadRequestError", "message": "Invalid mobile number"}'
-      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotxter::BadRequestError)
-      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotxter::BadRequestError)
-      expect { raise Promotxter::BadRequestError, 'Invalid mobile number' }.to raise_error('Invalid mobile number')
+      stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_raise(Promotexter::BadRequestError)
+      expect { client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'}) }.to raise_error(Promotexter::BadRequestError)
+      expect { raise Promotexter::BadRequestError, 'Invalid mobile number' }.to raise_error('Invalid mobile number')
     end
   end
 end

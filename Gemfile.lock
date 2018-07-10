@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    promotxter (0.1.0)
+    promotexter (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -29,7 +29,6 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     safe_yaml (1.0.4)
-    vcr (4.0.0)
     webmock (3.4.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -41,10 +40,9 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   dotenv (~> 2.5.0)
-  promotxter!
+  promotexter!
   rake (~> 10.0)
   rspec (~> 3.0)
-  vcr (~> 4.0.0)
   webmock (~> 3.4.2)
 
 BUNDLED WITH
