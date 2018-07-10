@@ -27,7 +27,6 @@ RSpec.describe Promotexter do
     it 'should have a sender id' do
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
       expect(client.from).to eq ENV['Promotexter_FROM']
-      expect(response[:from]).to eq ENV['Promotexter_FROM']
     end
   end
 
