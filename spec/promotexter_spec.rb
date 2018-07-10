@@ -4,7 +4,7 @@ require 'json'
 Dotenv.load
 
 RSpec.describe Promotexter do
-  let(:client) {Promotexter::Client.new(api_key: ENV['Promotexter_API_KEY'], api_secret: ENV['Promotexter_API_SECRET'], from: ENV['Promotexter_FROM'])}
+  let(:client) {Promotexter::Client.new(api_key: ENV['PROMOTEXTER_API_KEY'], api_secret: ENV['PROMOTEXTER_API_SECRET'], from: ENV['PROMOTEXTER_FROM'])}
   before do
     res_body = '{"apiKey": "key", "apiSecret": "secret", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
     stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})  
@@ -17,16 +17,16 @@ RSpec.describe Promotexter do
 
   context 'when initializing a request' do
     it 'should have an API key' do
-      expect(client.api_key).to eq ENV['Promotexter_API_KEY']
+      expect(client.api_key).to eq ENV['PROMOTEXTER_API_KEY']
     end
 
     it 'should have an API secret' do
-      expect(client.api_secret).to eq ENV['Promotexter_API_SECRET']
+      expect(client.api_secret).to eq ENV['PROMOTEXTER_API_SECRET']
     end
 
     it 'should have a sender id' do
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
-      expect(client.from).to eq ENV['Promotexter_FROM']
+      expect(client.from).to eq ENV['PROMOTEXTER_FROM'] 
     end
   end
 
