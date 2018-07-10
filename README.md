@@ -11,7 +11,7 @@ A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/
 
     $ gem install promotexter
 
-  	Or add it to your `Gemfile`:
+ Or add it to your `Gemfile`:
 
   	`gem promotexter`
 
