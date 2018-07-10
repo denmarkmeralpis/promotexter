@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "promotxter"
+require "Promotexter"
 require "webmock/rspec"
 WebMock.disable_net_connect!(allow_localhost: true)
 
