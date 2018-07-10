@@ -13,7 +13,7 @@ A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/
 
  Or add it to your `Gemfile`:
 
-  	`gem promotexter`
+  	gem promotexter
 
 ## Usage
 
