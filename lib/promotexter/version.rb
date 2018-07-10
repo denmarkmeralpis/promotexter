@@ -1,3 +1,3 @@
-module Promotxter
-  VERSION = "0.1.0"
+module Promotexter
+  VERSION = "0.3.0"
 end

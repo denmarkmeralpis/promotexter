@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-module Promotxter
+module Promotexter
 
   class Error < StandardError
     def initialize(message)
