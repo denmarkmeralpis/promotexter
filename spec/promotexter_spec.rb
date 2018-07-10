@@ -3,10 +3,10 @@ require 'dotenv'
 require 'json'
 Dotenv.load
 
-RSpec.describe Promotxter do
+RSpec.describe Promotexter do
   let(:client) {Promotxter::Client.new(api_key: ENV['PROMOTXTER_API_KEY'], api_secret: ENV['PROMOTXTER_API_SECRET'], from: ENV['PROMOTXTER_FROM'])}
   before do
-    res_body = '{"apiKey": "f94a0c462070e9a26166d7b30474d0f8", "apiSecret": "a8ea0855e8641cf00d15fe30342618466", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
+    res_body = '{"apiKey": "key", "apiSecret": "secret", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
     stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})  
   end
 
