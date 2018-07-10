@@ -9,7 +9,11 @@ A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/
 
 ## Installation
 
-    $ gem install chikka
+    $ gem install promotexter
+
+  	Or add it to your `Gemfile`:
+
+  	`gem promotexter`
 
 ## Usage
 
