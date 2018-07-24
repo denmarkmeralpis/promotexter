@@ -6,7 +6,7 @@ Dotenv.load
 RSpec.describe Promotexter do
   let(:client) {Promotexter::Client.new(api_key: ENV['PROMOTEXTER_API_KEY'], api_secret: ENV['PROMOTEXTER_API_SECRET'], from: ENV['PROMOTEXTER_FROM'])}
   before do
-    res_body = '{"api_key": "key", "api_secret": "secret", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
+    res_body = '{"api_key": "key", "api_secret": "secret", "from": "DEMO", "text": "testing2", "to": "6391xxxxxxxx"}'
     stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})
   end
 
