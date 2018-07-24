@@ -17,7 +17,7 @@ A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/
 
 ## Usage
 
-Construct a Chikka::Client object and use the #send_message method to
+Construct a Promotexter::Client object and use the #send_message method to
 send a message. For example:
 
 ```ruby
@@ -31,7 +31,7 @@ client.send_message(message:'This is a test', to:'639171234567')
 
 Best practice for storing credentials for external services in production is
 to use environment variables, as described by [12factor.net/config](http://12factor.net/config).
-Chikka::Client defaults to extracting the client_id, secret_key and shortcode it needs from the
+Promotexter::Client defaults to extracting the client_id, secret_key and shortcode it needs from the
 PROMOTEXTER_API_KEY, PROMOTEXTER_API_SECRET and PROMOTEXTER_FROM environment variables if the
 options were not specified explicitly.
 
