@@ -6,8 +6,8 @@ Dotenv.load
 RSpec.describe Promotexter do
   let(:client) {Promotexter::Client.new(api_key: ENV['PROMOTEXTER_API_KEY'], api_secret: ENV['PROMOTEXTER_API_SECRET'], from: ENV['PROMOTEXTER_FROM'])}
   before do
-    res_body = '{"apiKey": "key", "apiSecret": "secret", "from": "DEMO", "text": "testing2", "to": "639369642045"}'
-    stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})  
+    res_body = '{"api_key": "key", "api_secret": "secret", "from": "DEMO", "text": "testing2", "to": "6391xxxxxxxx"}'
+    stub_request(:post, "https://rest-portal.promotexter.com/sms/send").to_return(body: res_body, status: 200, headers: {})
   end
 
 
@@ -26,7 +26,7 @@ RSpec.describe Promotexter do
 
     it 'should have a sender id' do
       response = client.send_message({to: ENV['RECEIVING_NUMBER'], text: 'testing2'})
-      expect(client.from).to eq ENV['PROMOTEXTER_FROM'] 
+      expect(client.from).to eq ENV['PROMOTEXTER_FROM']
     end
   end
 
@@ -72,7 +72,7 @@ RSpec.describe Promotexter do
       expect(response[:data][:to]).not_to eq nil
     end
   end
-  
+
   context 'when receiving a failed json response' do
     it 'raise an error' do
       error_response = '{"statusCode": 400, "error": "BadRequestError", "message": "Missing Parameter"}'

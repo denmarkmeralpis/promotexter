@@ -26,8 +26,8 @@ module Promotexter
       @host = 'https://rest-portal.promotexter.com'
       @http = Net::HTTP.new(@host, Net::HTTP.https_default_port)
 
-      MESSAGE_PARAMS['apiKey'] =  @api_key
-      MESSAGE_PARAMS['apiSecret'] =  @api_secret
+      MESSAGE_PARAMS['api_key'] =  @api_key
+      MESSAGE_PARAMS['api_secret'] =  @api_secret
       MESSAGE_PARAMS['from'] =  @from
     end
 
@@ -41,14 +41,14 @@ module Promotexter
       response = JSON.parse(res.body, symbolize_names: true)
 
       if response.has_key?(:statusCode)
-        case 
+        case
         when 400
           raise BadRequestError.new(message: response[:message])
         when 401
           raise AuthenticationError.new(message: response[:message])
         else
           raise Error.new(response[:message])
-        end      
+        end
       else
         response
       end
