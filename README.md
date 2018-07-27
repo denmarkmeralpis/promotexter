@@ -44,8 +44,6 @@ options were not specified explicitly.
 3. Commit your changes (`git commit -am 'Added awesome new features'`)
 4. Push to the branch (`git push origin new-feature`)
 5. Create new Pull Request
-6. ???
-7. Profit
 
 ## MIT Open Source License
 
