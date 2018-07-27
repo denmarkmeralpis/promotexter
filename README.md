@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/denmarkmeralpis/promotexter.svg?branch=master)](https://travis-ci.org/denmarkmeralpis/promotexter) [![Test Coverage](https://api.codeclimate.com/v1/badges/c20c43addcd61c8777f1/test_coverage)](https://codeclimate.com/github/denmarkmeralpis/promotexter/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/c20c43addcd61c8777f1/maintainability)](https://codeclimate.com/github/denmarkmeralpis/promotexter/maintainability) [![Gem Version](https://badge.fury.io/rb/promotexter.svg)](https://badge.fury.io/rb/promotexter)
+
 Promotexter
 ======
 
