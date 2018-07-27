@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'Promotexter'
+require 'promotexter'
 require 'webmock/rspec'
 require 'simplecov'
 require 'simplecov-console'
