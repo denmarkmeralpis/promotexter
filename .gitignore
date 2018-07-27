@@ -10,3 +10,7 @@
 # rspec failure tracking
 .rspec_status
 .env
+
+# ignore files
+Gemfile.lock
+promotexter-0.3.1.gem
