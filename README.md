@@ -1,4 +1,6 @@
-promotexter
+[![Build Status](https://travis-ci.org/denmarkmeralpis/promotexter.svg?branch=master)](https://travis-ci.org/denmarkmeralpis/promotexter) [![Test Coverage](https://api.codeclimate.com/v1/badges/c20c43addcd61c8777f1/test_coverage)](https://codeclimate.com/github/denmarkmeralpis/promotexter/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/c20c43addcd61c8777f1/maintainability)](https://codeclimate.com/github/denmarkmeralpis/promotexter/maintainability) [![Gem Version](https://badge.fury.io/rb/promotexter.svg)](https://badge.fury.io/rb/promotexter)
+
+Promotexter
 ======
 
 A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/landing/developers) for sending mesages
@@ -42,8 +44,6 @@ options were not specified explicitly.
 3. Commit your changes (`git commit -am 'Added awesome new features'`)
 4. Push to the branch (`git push origin new-feature`)
 5. Create new Pull Request
-6. ???
-7. Profit
 
 ## MIT Open Source License
 
@@ -54,6 +54,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Acknowledgement
-Originally created by Denmark Meralpis, Updated by Scrambled Eggs Software Inc.
+Originally created by Nujian Den Mark Meralpis, Updated by Scrambled Eggs Software Inc.
 
 2016-2018

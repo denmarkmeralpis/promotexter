@@ -2,7 +2,6 @@ require 'net/http'
 require 'json'
 
 module Promotexter
-
   class Error < StandardError
     def initialize(message)
       super(message)
@@ -27,28 +26,28 @@ module Promotexter
       @http = Net::HTTP.new(@host, Net::HTTP.https_default_port)
 
       MESSAGE_PARAMS['apiKey'] =  @api_key
-      MESSAGE_PARAMS['apiSecret'] =  @api_secret
-      MESSAGE_PARAMS['from'] =  @from
+      MESSAGE_PARAMS['apiSecret'] = @api_secret
+      MESSAGE_PARAMS['from'] = @from
     end
 
     def send_message(params = {})
-      uri = URI(@host+SMSAPI_PATH)
-      MESSAGE_PARAMS['to'] =  params[:to]
-      MESSAGE_PARAMS['text'] =  params[:text]
+      uri = URI(@host + SMSAPI_PATH)
+      MESSAGE_PARAMS['to'] = params[:to]
+      MESSAGE_PARAMS['text'] = params[:text]
 
       res = Net::HTTP.post_form(uri, MESSAGE_PARAMS)
       puts res.inspect
       response = JSON.parse(res.body, symbolize_names: true)
 
-      if response.has_key?(:statusCode)
-        case 
+      if response.key?(:statusCode)
+        case response[:statusCode]
         when 400
           raise BadRequestError.new(message: response[:message])
         when 401
           raise AuthenticationError.new(message: response[:message])
         else
-          raise Error.new(response[:message])
-        end      
+          raise Error, response[:message]
+        end
       else
         response
       end
