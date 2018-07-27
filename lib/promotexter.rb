@@ -1,2 +1,2 @@
-require "promotexter/version"
-require "promotexter/client"
+require 'promotexter/version'
+require 'promotexter/client'
