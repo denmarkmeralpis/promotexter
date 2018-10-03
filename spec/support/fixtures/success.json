@@ -1,0 +1,11 @@
+{
+   "id": "9ee26b12-9b2e-406a-8c02-e482edfe3991",
+   "unitCost": 0.5,
+   "transactionCost": 0.5,
+   "operatorCode": "PHL_GLOBE",
+   "messageParts": 1,
+   "from": "DEMO",
+   "to": "639171234567",
+   "source": "1.1.1.1",
+   "remaining": 496.5
+}

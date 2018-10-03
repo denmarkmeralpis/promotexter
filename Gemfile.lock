@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    promotexter (0.3.1)
+    promotexter (0.4.0)
 
 GEM
   remote: https://rubygems.org/
