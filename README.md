@@ -33,14 +33,14 @@ require 'promotexter'
 
 # send sms
 client = Promotexter::Client.new
-client.send_message(message: 'This is a test', to: '639171234567')
+client.send_message(text: 'This is a test', to: '639171234567')
 
 # or simply
-Promotexter::Client.send_message(message: 'This is a test', to: '639171234567')
+Promotexter::Client.send_message(text: 'This is a test', to: '639171234567')
 
 # or you can also pass the configurations as arguments
 client = Promotexter::Client.new(api_key:'key', api_secret:'secret', sender_id:'xxxxxx')
-client.send_message(message:'This is a test', to:'639171234567')
+client.send_message(text: 'This is a test', to:'639171234567')
 ```
 If you want to use the delivery reports, head over to your initializer and uncomment the dlr_callback & dlr_reports lines
 
