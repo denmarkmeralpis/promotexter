@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    promotexter (0.3.1)
+    promotexter (0.4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -124,7 +124,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   byebug
-  dotenv (~> 2.5.0)
+  dotenv (~> 2.5, >= 2.5.0)
   generator_spec
   promotexter!
   rake (~> 10.0)
@@ -132,7 +132,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
-  webmock (~> 3.4.2)
+  webmock (~> 3.4, >= 3.4.2)
 
 BUNDLED WITH
    1.16.2
