@@ -35,6 +35,14 @@ RSpec.describe Promotexter::Configuration do
     end
   end
 
+  context 'with delivery reports set to true' do
+    before { Promotexter.configuration.dlr_report = true }
+
+    it 'raises configuration error for dlr_callback' do
+      expect { Promotexter.configuration.dlr_callback }.to raise_error(Promotexter::Errors::Configuration)
+    end
+  end
+
   context '#reset' do
     it 'resets the configuration values' do
       expect(Promotexter.configuration.api_key).to eq(ENV['PROMOTEXTER_API_KEY'])

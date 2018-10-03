@@ -3,6 +3,7 @@ module Promotexter
   # class cofiguration
   class Configuration
     attr_writer :api_key, :api_secret, :sender_id, :dlr_callback, :dlr_report, :async
+    attr_reader :dlr_report, :async
 
     def initialize
       @api_key, @api_secret, @sender_id, @dlr_callback, @dlr_report, @async = nil
@@ -23,10 +24,9 @@ module Promotexter
       @sender_id
     end
 
-    attr_reader :dlr_callback
-
-    attr_reader :dlr_report
-
-    attr_reader :async
+    def dlr_callback
+      raise Errors::Configuration, 'Promotexter dlr_callback should have a valid value since dlr_report is set to true' if @dlr_report && @dlr_callback.blank?
+      @dlr_callback
+    end
   end
 end

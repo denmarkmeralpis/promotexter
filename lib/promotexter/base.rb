@@ -11,6 +11,10 @@ module Promotexter
       @api_secret ||= Promotexter.configuration.api_secret
     end
 
+    def sender_id
+      @sender_id ||= Promotexter.configuration.sender_id
+    end
+
     def uri_params
       @uri_params ||= {}
     end

@@ -3,19 +3,19 @@ Promotexter.configure do |config|
   config.api_key = ENV['PROMOTEXTER_API_KEY']
   config.api_secret = ENV['PROMOTEXTER_API_SECRET']
 
-  # Get it from promotexter and head over to Sender IDs
-  config.from = 'DEMO'
+  # Get it from promotexter portal under to Sender IDs tab
+  config.sender_id = ENV['PROMOTEXTER_SENDER_ID']
 
-  # If set to "1", only transactionId will be returned in our response.
-  # config.async = nil
+  # If set to true, only transactionId will be returned in promotexter response.
+  # config.async = true
 
   # -------------------------------------------------------
   # Uncomment the lines below to use Delivery Report module
-  # https://promotexter.docs.apiary.io/
+  # See full documentation at https://promotexter.docs.apiary.io/
   # -------------------------------------------------------
 
-  # Must be set to "1" if you want to receive DLR notifications to the indicated dlrCallback. This overrides account settings.
-  # config.dlr_report = '1'
+  # Must be set this to true if you want to receive DLR notifications to the indicated dlr_callback. This overrides account settings.
+  # config.dlr_report = true
 
   # Your own API endpoint where we will be sending DLR notifications. This overrides account settings.
   # config.dlr_callback = 'https://example.com'

@@ -41,6 +41,10 @@ RSpec.describe Promotexter::Client do
         stub_request(:post, host).to_return(body: response_body('success.json'), status: 200, headers: {})
         response = client.send_message(text: 'hello world', to: ENV['RECEIVING_NUMBER'])
 
+        expect(client.sender_id).to eq(ENV['PROMOTEXTER_SENDER_ID'])
+        expect(client.api_key).to eq(ENV['PROMOTEXTER_API_KEY'])
+        expect(client.api_secret).to eq(ENV['PROMOTEXTER_API_SECRET'])
+
         expect(response).to be_truthy
         expect(response).to have_key(:id)
         expect(response).to have_key(:from)
