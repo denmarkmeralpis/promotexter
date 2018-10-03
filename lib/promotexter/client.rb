@@ -3,6 +3,7 @@ require 'json'
 
 # namespace
 module Promotexter
+  # sending of sms
   class Client < Base
     attr_accessor :sender_id, :to, :text, :reference_id, :category_id
 
