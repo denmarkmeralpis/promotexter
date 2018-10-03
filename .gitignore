@@ -15,3 +15,4 @@
 # ignore files
 Gemfile.lock
 promotexter-0.3.1.gem
+promotexter-*.*.*.gem
