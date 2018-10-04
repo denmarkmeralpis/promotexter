@@ -41,6 +41,10 @@ Promotexter::Client.send_message(text: 'This is a test', to: '639171234567')
 # or you can also pass the configurations as arguments
 client = Promotexter::Client.new(api_key:'key', api_secret:'secret', sender_id:'xxxxxx')
 client.send_message(text: 'This is a test', to:'639171234567')
+
+# overriding of sender_id parameter from send_message
+client = Promotexter::Client.new
+client.send_message(text: 'Override sender_id on demand', to: '639171234567', sender_id: 'Sample')
 ```
 If you want to use the delivery reports, head over to your initializer and uncomment the dlr_callback & dlr_reports lines
 
