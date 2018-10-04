@@ -18,6 +18,7 @@ module Promotexter
     def send_message(options={})
       @to   = options.fetch(:to)
       @text = options.fetch(:text)
+      @sender_id = options[:sender_id]
 
       endpoint = API_HOST + '/api/sms'
       uri      = URI(endpoint)
