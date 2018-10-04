@@ -36,6 +36,16 @@ RSpec.describe Promotexter::Client do
       end
     end
 
+    context 'overrides sender id when sending message' do
+      it 'should return new sender_id' do
+        stub_request(:post, host).to_return(body: response_body('success.json'))
+        response = client.send_message(to: '639177710296', text: 'hello world', sender_id: 'NEW_SENDER_ID')
+
+        expect(client.sender_id).to eq('NEW_SENDER_ID')
+        expect(response).to be_truthy
+      end
+    end
+
     context 'sending a valid configuration and parameters' do
       it 'should have a success response' do
         stub_request(:post, host).to_return(body: response_body('success.json'), status: 200, headers: {})
