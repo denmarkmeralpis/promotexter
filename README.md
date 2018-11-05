@@ -3,7 +3,7 @@
 Promotexter
 ======
 
-A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/landing/developers) for sending mesages
+A Ruby gem for consuming the [Promotexter API](http://promotexter.com/index.php/landing/developers) for sending mesages. Please use version >= 0.4.2 due to potential security vulnerability in one of our gem dependencies.
 
 ## Requirements
 
